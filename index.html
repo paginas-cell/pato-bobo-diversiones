@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diversiones Pato Bobo | Diversión sin límites</title>
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Fredoka One (Divertida para Títulos) & Nunito (Lectura) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'fun-pink': '#FF4B91',
+                        'fun-blue': '#08C2FF',
+                        'fun-yellow': '#FFCD4B',
+                        'fun-green': '#A6FF4B',
+                        'fun-purple': '#9D4BFF'
+                    },
+                    boxShadow: {
+                        'cartoon': '6px 6px 0px rgba(0, 0, 0, 0.8)',
+                        'cartoon-hover': '2px 2px 0px rgba(0, 0, 0, 0.8)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos Personalizados (Animaciones y Fuentes) -->
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #F0F8FF;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-font {
+            font-family: 'Fredoka One', cursive;
+            letter-spacing: 1px;
+        }
+
+        /* Animación de rebote personalizado */
+        .bouncy {
+            animation: bounceCustom 2.5s infinite ease-in-out;
+        }
+
+        @keyframes bounceCustom {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Animación de nubes flotando */
+        .float-cloud {
+            animation: float 10s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(30px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Utilidad para elementos que aparecen al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estructura del Carrusel */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            border-radius: 2rem;
+            border: 4px dashed #fff;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Botones con estilo Cartoon */
+        .btn-cartoon {
+            transition: all 0.2s ease;
+        }
+        .btn-cartoon:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8) !important;
+        }
+        .btn-cartoon:active {
+            transform: translate(6px, 6px);
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.8) !important;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navegación -->
+    <nav class="bg-fun-blue text-white py-4 px-6 fixed w-full top-0 z-50 shadow-cartoon border-b-4 border-black flex justify-between items-center">
+        <div class="text-2xl md:text-3xl brand-font text-fun-yellow drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            <i class="fa-solid fa-face-grin-stars mr-2"></i>PATO BOBO
+        </div>
+        <div class="hidden md:flex gap-6 font-bold text-lg">
+            <a href="#inicio" class="hover:text-fun-yellow transition">Inicio</a>
+            <a href="#como-funciona" class="hover:text-fun-yellow transition">¿Cómo Funciona?</a>
+            <a href="#edades" class="hover:text-fun-yellow transition">Edades</a>
+            <a href="#atracciones" class="hover:text-fun-yellow transition">Atracciones</a>
+            <a href="#informacion" class="hover:text-fun-yellow transition">Horarios</a>
+        </div>
+        <a href="#precios" class="bg-fun-pink text-white brand-font py-2 px-6 rounded-full shadow-cartoon btn-cartoon border-2 border-black hidden md:block">
+            ¡Ver Precios!
+        </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="inicio" class="relative pt-32 pb-20 px-4 min-h-screen flex flex-col md:flex-row justify-center items-center overflow-hidden bg-gradient-to-b from-fun-blue to-[#E0F7FA]">
+        
+        <!-- Elementos decorativos de fondo (Nubes) -->
+        <i class="fa-solid fa-cloud text-white text-6xl absolute top-32 left-10 float-cloud opacity-80"></i>
+        <i class="fa-solid fa-cloud text-white text-8xl absolute top-40 right-20 float-cloud opacity-60" style="animation-delay: 2s;"></i>
+        <i class="fa-solid fa-star text-fun-yellow text-4xl absolute top-1/2 left-10 bouncy opacity-90 hidden md:block"></i>
+        <i class="fa-solid fa-star text-fun-pink text-5xl absolute top-1/4 right-10 bouncy opacity-90" style="animation-delay: 0.5s;"></i>
+
+        <div class="max-w-6xl mx-auto z-10 flex flex-col md:flex-row items-center gap-12 w-full mt-10 md:mt-0">
+            
+            <!-- Texto Principal -->
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl brand-font text-white drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] mb-6 bouncy">
+                    ¡DIVERSIONES PATO BOBO!
+                </h1>
+                <p class="text-xl md:text-3xl font-bold text-gray-800 bg-white/80 inline-block px-6 py-2 rounded-2xl border-4 border-dashed border-fun-pink mb-10 transform -rotate-2">
+                    Toboganes, telarañas y mucha aventura.
+                </p>
+                <br>
+                <a href="#precios" class="inline-block bg-fun-yellow text-black text-2xl brand-font py-4 px-10 rounded-full shadow-cartoon btn-cartoon border-4 border-black">
+                    ¡EMPEZAR A JUGAR! <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Mascota Pato Bobo (Sula nebouxii) -->
+            <div class="flex-1 flex justify-center relative mt-10 md:mt-0">
+                <!-- Globo de texto (Speech Bubble) -->
+                <div class="absolute -top-6 md:-top-10 right-4 md:right-16 bg-white text-black brand-font text-xl md:text-2xl px-6 py-3 rounded-3xl border-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] transform rotate-6 z-20 bouncy" style="animation-delay: 0.8s;">
+                    ¡Hola amiguitos! <br><span class="text-fun-blue">¡Cuac!</span>
+                    <!-- Cola del globo de texto -->
+                    <div class="absolute -bottom-4 left-10 w-6 h-6 bg-white border-b-4 border-r-4 border-black transform rotate-45"></div>
+                </div>
+                
+                <!-- Imagen del Pato Bobo de Patas Azules (Sula nebouxii) -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Blue-footed_booby_%28Sula_nebouxii%29.jpg/640px-Blue-footed_booby_%28Sula_nebouxii%29.jpg" 
+                     alt="Mascota Pato Bobo de patas azules" 
+                     class="w-72 h-72 md:w-[420px] md:h-[420px] object-cover rounded-full border-8 border-fun-blue shadow-[10px_10px_0px_rgba(0,0,0,0.8)] transform -rotate-3 hover:rotate-0 transition duration-300">
+            </div>
+        </div>
+    </header>
+
+    <!-- CÓMO FUNCIONA / PRECIOS SECTION -->
+    <section id="como-funciona" class="py-20 px-6 bg-fun-yellow border-t-8 border-b-8 border-black border-dashed relative">
+        <!-- Decoración -->
+        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black text-white brand-font px-8 py-3 rounded-full text-2xl z-10 shadow-lg">
+            ¿CÓMO FUNCIONA?
+        </div>
+
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 mt-10">
+            
+            <!-- Texto Explicativo -->
+            <div class="flex-1 text-center md:text-left reveal">
+                <h2 class="text-4xl md:text-5xl brand-font text-black mb-6 drop-shadow-[2px_2px_0px_rgba(255,255,255,1)]">
+                    Compra tiempo, <br><span class="text-fun-pink">colecciona sonrisas</span>
+                </h2>
+                <p class="text-xl font-bold mb-6 text-gray-800">
+                    Nuestra <span class="bg-white px-2 py-1 rounded">Gran Jaula Interactiva</span> está diseñada para que los niños saquen toda su energía. Pagas por el tiempo que juegan, ¡nosotros ponemos la seguridad y la diversión!
+                </p>
+                <ul class="text-lg font-bold text-gray-800 space-y-4">
+                    <li><i class="fa-solid fa-check-circle text-fun-pink text-2xl mr-2 align-middle"></i> Acceso total a resbaladillas, pasamanos y telarañas.</li>
+                    <li><i class="fa-solid fa-check-circle text-fun-pink text-2xl mr-2 align-middle"></i> Zonas divididas por edad para mayor seguridad.</li>
+                    <li><i class="fa-solid fa-check-circle text-fun-pink text-2xl mr-2 align-middle"></i> Staff supervisando en todo momento.</li>
+                </ul>
+
+                <!-- Banner de Guardería -->
+                <div class="mt-8 bg-fun-purple text-white p-6 rounded-2xl border-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] transform -rotate-1 hover:rotate-0 transition duration-300">
+                    <h4 class="brand-font text-2xl mb-2 text-fun-yellow drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">
+                        <i class="fa-solid fa-shapes mr-2"></i> ¡Servicio de Guardería!
+                    </h4>
+                    <p class="font-bold text-lg leading-tight">
+                        Dejamos a tus pequeños jugar con seguridad mientras haces tus pendientes. Cobro por horas. 
+                        <br><span class="bg-black/30 px-3 py-1 rounded inline-block mt-3 text-sm border border-white/20">Solo para niños mayores de 5 años</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Precio -->
+            <div id="precios" class="flex-1 reveal">
+                <div class="bg-white rounded-3xl p-8 shadow-cartoon border-4 border-black text-center transform rotate-2 hover:rotate-0 transition duration-300">
+                    <div class="bg-fun-pink text-white brand-font text-xl py-2 px-4 rounded-full inline-block mb-4 border-2 border-black">
+                        TARIFA ÚNICA
+                    </div>
+                    <div class="text-6xl brand-font text-fun-blue drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)] mb-2">
+                        <!-- Desarrollador: Modifica el precio aquí -->
+                        $50.00 <span class="text-2xl text-gray-500">MXN</span>
+                    </div>
+                    <div class="text-3xl brand-font text-black bg-fun-green inline-block px-4 py-1 rounded-lg border-2 border-black mb-6">
+                        Por cada 30 minutos
+                    </div>
+                    <p class="text-gray-600 font-bold mb-8">
+                        *Pulsera de tiempo controlada al entrar.<br>
+                        *Tiempo extra se cobra proporcionalmente.
+                    </p>
+                    <button onclick="document.getElementById('modal-reserva').classList.remove('hidden')" class="w-full bg-fun-blue text-white text-2xl brand-font py-4 rounded-2xl shadow-cartoon btn-cartoon border-4 border-black">
+                        COMPRAR ACCESO
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDADES (CATEGORÍAS) SECTION -->
+    <section id="edades" class="py-24 px-6 bg-[#F0F8FF] relative">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-5xl brand-font text-fun-purple drop-shadow-[3px_3px_0px_rgba(0,0,0,0.8)]">
+                Zonas por Edades
+            </h2>
+            <p class="text-xl font-bold mt-4 text-gray-600">¡Diversión segura y a la medida de cada niño!</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Grupo 1: Pequeños -->
+            <div class="bg-fun-pink text-white rounded-3xl p-8 border-4 border-black shadow-cartoon hover:-translate-y-4 transition duration-300 reveal">
+                <div class="text-6xl text-fun-yellow drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)] mb-6 text-center bouncy">
+                    <i class="fa-solid fa-baby"></i>
+                </div>
+                <h3 class="text-3xl brand-font text-center mb-2 drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Bebés & Toddlers</h3>
+                <div class="text-center font-bold text-fun-yellow text-xl mb-4 bg-black/20 rounded-full py-1">
+                    1 a 3 años
+                </div>
+                <p class="font-bold text-center">
+                    Piscinas de pelotas pequeñas, bloques de espuma y resbaladillas suaves. Máxima supervisión.
+                </p>
+            </div>
+
+            <!-- Grupo 2: Medianos -->
+            <div class="bg-fun-blue text-white rounded-3xl p-8 border-4 border-black shadow-cartoon hover:-translate-y-4 transition duration-300 reveal" style="transition-delay: 100ms;">
+                <div class="text-6xl text-fun-yellow drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)] mb-6 text-center bouncy">
+                    <i class="fa-solid fa-child-reaching"></i>
+                </div>
+                <h3 class="text-3xl brand-font text-center mb-2 drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Aventureros</h3>
+                <div class="text-center font-bold text-fun-yellow text-xl mb-4 bg-black/20 rounded-full py-1">
+                    4 a 7 años
+                </div>
+                <p class="font-bold text-center">
+                    Telarañas de cuerdas, túneles mágicos, pasamanos de baja altura y toboganes cerrados.
+                </p>
+            </div>
+
+            <!-- Grupo 3: Grandes -->
+            <div class="bg-fun-purple text-white rounded-3xl p-8 border-4 border-black shadow-cartoon hover:-translate-y-4 transition duration-300 reveal" style="transition-delay: 200ms;">
+                <div class="text-6xl text-fun-green drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)] mb-6 text-center bouncy">
+                    <i class="fa-solid fa-child-combatant"></i>
+                </div>
+                <h3 class="text-3xl brand-font text-center mb-2 drop-shadow-[1px_1px_0px_rgba(0,0,0,1)]">Titanes</h3>
+                <div class="text-center font-bold text-fun-green text-xl mb-4 bg-black/20 rounded-full py-1">
+                    8 a 12 años
+                </div>
+                <p class="font-bold text-center">
+                    Rampas extremas, obstáculos ninja, trancas palancas altas y toboganes gigantes en espiral.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ATRACCIONES (CARRUSEL DE IMÁGENES) -->
+    <section id="atracciones" class="py-24 px-6 bg-fun-green border-t-8 border-black border-dashed">
+        <div class="max-w-5xl mx-auto reveal">
+            <div class="text-center mb-10">
+                <h2 class="text-5xl brand-font text-black drop-shadow-[2px_2px_0px_rgba(255,255,255,1)]">
+                    ¡Vistazo a la Jaula!
+                </h2>
+                <p class="text-2xl font-bold mt-4 text-gray-800">Conoce nuestras instalaciones de primer nivel.</p>
+            </div>
+
+            <!-- Estructura del Carrusel -->
+            <div class="carousel-container shadow-[10px_10px_0px_rgba(0,0,0,0.8)] bg-white p-2">
+                
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Desarrollador: Cambia las URLs de las imágenes aquí por las fotos reales del local -->
+                    
+                    <!-- Imagen 1: Toboganes -->
+                    <img class="carousel-slide rounded-xl border-4 border-black" 
+                         src="https://images.unsplash.com/photo-1566450653303-2614cbb292ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Toboganes coloridos">
+                    
+                    <!-- Imagen 2: Pelotas / Túneles -->
+                    <img class="carousel-slide rounded-xl border-4 border-black" 
+                         src="https://images.unsplash.com/photo-1545607386-7a871d373305?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Piscina de pelotas">
+                    
+                    <!-- Imagen 3: Telarañas y Pasamanos -->
+                    <img class="carousel-slide rounded-xl border-4 border-black" 
+                         src="https://images.unsplash.com/photo-1520627725946-b6d4bb4bd127?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Estructura de telarañas para escalar">
+                         
+                    <!-- Imagen 4: Trancas, Obstáculos -->
+                    <img class="carousel-slide rounded-xl border-4 border-black" 
+                         src="https://images.unsplash.com/photo-1590076214534-118ff86b86ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Juegos de obstáculos">
+                </div>
+
+                <!-- Controles del carrusel -->
+                <button id="prevBtn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-fun-pink text-white w-14 h-14 rounded-full text-2xl border-4 border-black shadow-cartoon btn-cartoon flex items-center justify-center z-10">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                
+                <button id="nextBtn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-fun-blue text-white w-14 h-14 rounded-full text-2xl border-4 border-black shadow-cartoon btn-cartoon flex items-center justify-center z-10">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <!-- Indicadores (Puntitos) -->
+                <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10" id="carouselDots">
+                    <!-- Se generan dinámicamente con JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIOS Y UBICACIÓN SECTION -->
+    <section id="informacion" class="py-24 px-6 bg-fun-blue border-t-8 border-black border-dashed relative">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 text-white">
+            
+            <!-- Horarios -->
+            <div class="flex-1 bg-fun-pink p-8 md:p-10 rounded-3xl border-4 border-black shadow-cartoon reveal hover:-translate-y-2 transition duration-300">
+                <h2 class="text-4xl md:text-5xl brand-font mb-6 drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] text-fun-yellow">
+                    <i class="fa-solid fa-clock"></i> Horarios
+                </h2>
+                <p class="text-2xl font-bold mb-6">¡Te esperamos los fines de semana para jugar sin parar!</p>
+                <div class="bg-black/20 p-6 rounded-2xl border-2 border-dashed border-white">
+                    <ul class="text-2xl font-bold space-y-4">
+                        <li class="flex justify-between items-center border-b-2 border-white/30 pb-2">
+                            <span><i class="fa-solid fa-calendar-day text-fun-yellow mr-2"></i> Viernes</span> 
+                            <span class="bg-white text-black px-3 py-1 rounded-xl text-lg">4 PM - 11 PM</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b-2 border-white/30 pb-2">
+                            <span><i class="fa-solid fa-calendar-day text-fun-yellow mr-2"></i> Sábados</span> 
+                            <span class="bg-white text-black px-3 py-1 rounded-xl text-lg">4 PM - 11 PM</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span><i class="fa-solid fa-calendar-day text-fun-yellow mr-2"></i> Domingos</span> 
+                            <span class="bg-white text-black px-3 py-1 rounded-xl text-lg">4 PM - 11 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ubicación -->
+            <div class="flex-1 bg-fun-yellow text-black p-8 md:p-10 rounded-3xl border-4 border-black shadow-cartoon reveal hover:-translate-y-2 transition duration-300" style="transition-delay: 150ms;">
+                <h2 class="text-4xl md:text-5xl brand-font mb-6 drop-shadow-[2px_2px_0px_rgba(255,255,255,1)] text-fun-purple">
+                    <i class="fa-solid fa-map-location-dot"></i> Ubicación
+                </h2>
+                <p class="text-xl font-bold mb-6 flex items-start">
+                    <i class="fa-solid fa-location-dot text-fun-pink text-3xl mr-3 mt-1"></i>
+                    <span>Glorieta del Pato Bobo, <br>La Reforma, Sinaloa.</span>
+                </p>
+                
+                <a href="https://maps.app.goo.gl/KG75zppCP6SvXKiK7" target="_blank" class="block w-full bg-fun-green text-black text-center text-xl md:text-2xl brand-font py-4 rounded-2xl shadow-cartoon btn-cartoon border-4 border-black mb-6 hover:bg-[#8cee2d]">
+                    ¡ABRIR EN MAPS! <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                </a>
+
+                <!-- Mapa embebido -->
+                <div class="w-full h-40 bg-white rounded-2xl border-4 border-black overflow-hidden flex items-center justify-center relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14495.275389658518!2d-108.064041763133!3d25.075487771701386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86bb72d73f4e24eb%3A0xda7114258f1f5be5!2sGlorieta%20del%20Pato%20Bobo!5e0!3m2!1ses!2smx!4v1730000000000!5m2!1ses!2smx" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 px-6 border-t-8 border-fun-pink text-center md:text-left">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            
+            <!-- Brand -->
+            <div>
+                <div class="text-3xl brand-font text-fun-yellow mb-2">
+                    <i class="fa-solid fa-face-grin-stars mr-2"></i>PATO BOBO
+                </div>
+                <p class="font-bold text-gray-400">El mejor centro de diversiones indoor.</p>
+            </div>
+
+            <!-- Ubicación de contacto -->
+            <div class="flex flex-col md:items-center">
+                <h4 class="brand-font text-xl text-fun-blue mb-4">¡Visítanos!</h4>
+                <p class="font-bold mb-2"><i class="fa-solid fa-location-dot text-fun-pink mr-2"></i> Glorieta del Pato Bobo, La Reforma</p>
+                <p class="font-bold"><i class="fa-solid fa-clock text-fun-pink mr-2"></i> Vie-Dom: 4 PM a 11 PM</p>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="flex md:justify-end space-x-4 justify-center">
+                <a href="#" class="w-12 h-12 bg-fun-pink rounded-full flex items-center justify-center text-xl hover:-translate-y-2 transition border-2 border-white">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-fun-blue rounded-full flex items-center justify-center text-xl hover:-translate-y-2 transition border-2 border-white">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-fun-yellow text-black rounded-full flex items-center justify-center text-xl hover:-translate-y-2 transition border-2 border-white">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="text-center mt-10 text-gray-500 font-bold text-sm">
+            © <span id="year"></span> Diversiones Pato Bobo. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Modal de Reserva (Reemplazo amigable y sin alertas) -->
+    <div id="modal-reserva" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] text-center transform scale-100">
+            <div class="text-6xl text-fun-pink mb-4 bouncy"><i class="fa-solid fa-ticket"></i></div>
+            <h3 class="text-3xl brand-font mb-4 text-fun-blue">¡Reserva en camino!</h3>
+            <p class="font-bold text-gray-700 mb-6 text-lg">Próximamente esta acción abrirá tu panel de registro o pasarela de pagos.</p>
+            <button onclick="document.getElementById('modal-reserva').classList.add('hidden')" class="w-full bg-fun-yellow text-black px-6 py-3 rounded-full brand-font border-4 border-black shadow-cartoon btn-cartoon text-xl">
+                ¡Entendido!
+            </button>
+        </div>
+    </div>
+
+    <!-- LÓGICA JAVASCRIPT (Carrusel, Animaciones y UI) -->
+    <script>
+        // === 1. LÓGICA DEL CARRUSEL DE IMÁGENES ===
+        const track = document.getElementById('carouselTrack');
+        const slides = Array.from(track.children);
+        const nextButton = document.getElementById('nextBtn');
+        const prevButton = document.getElementById('prevBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        let currentIndex = 0;
+        let autoplayInterval;
+
+        // Crear los puntitos (dots)
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('w-4', 'h-4', 'rounded-full', 'bg-white', 'border-2', 'border-black', 'transition-all');
+            if (index === 0) dot.classList.add('w-8', 'bg-fun-yellow'); // Estado activo inicial
+            dot.addEventListener('click', () => moveToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = Array.from(dotsContainer.children);
+
+        // Función para mover el carrusel
+        const moveToSlide = (index) => {
+            // Limitar índice
+            if (index < 0) index = slides.length - 1;
+            if (index > slides.length - 1) index = 0;
+            
+            currentIndex = index;
+            const amountToMove = currentIndex * -100;
+            track.style.transform = `translateX(${amountToMove}%)`;
+
+            // Actualizar puntitos
+            dots.forEach(dot => {
+                dot.classList.remove('w-8', 'bg-fun-yellow');
+                dot.classList.add('w-4', 'bg-white');
+            });
+            dots[currentIndex].classList.remove('w-4', 'bg-white');
+            dots[currentIndex].classList.add('w-8', 'bg-fun-yellow');
+
+            // Resetear autoplay al interactuar manualmente
+            resetAutoplay();
+        };
+
+        // Eventos de los botones prev/next
+        nextButton.addEventListener('click', () => moveToSlide(currentIndex + 1));
+        prevButton.addEventListener('click', () => moveToSlide(currentIndex - 1));
+
+        // Autoplay del carrusel (cambia cada 4 segundos)
+        const startAutoplay = () => {
+            autoplayInterval = setInterval(() => {
+                moveToSlide(currentIndex + 1);
+            }, 4000);
+        };
+
+        const resetAutoplay = () => {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        };
+
+        // Iniciar autoplay
+        startAutoplay();
+
+
+        // === 2. ANIMACIONES AL HACER SCROLL (Intersection Observer) ===
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Opcional: si quieres que la animación ocurra cada vez que se hace scroll, 
+                    // comenta la siguiente línea. Actualmente solo anima la primera vez.
+                    observer.unobserve(entry.target); 
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15, // Porcentaje del elemento visible antes de activar (15%)
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+
+        // === 3. AÑO ACTUAL EN FOOTER ===
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+    </script>
+</body>
+</html>
